@@ -1,0 +1,11 @@
+/* Side nav */
+.sidenav .social a
+{
+    color: rgba(0,0,0,0.87);
+    font-size: 20px;
+}
+
+.sidenav .social a:hover
+{
+    background-color: rgba(0,0,0,0.05);
+}
