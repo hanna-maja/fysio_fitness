@@ -27,7 +27,7 @@ SECRET_KEY = 'rl79(n)t*wzi2r=yo!osr6b31ou)1r^jo6ub58gh8gx%h_%&9!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fysio-fitness.herokuapp.com', 'fysiofitness.nu']
 
 
 # Application definition
