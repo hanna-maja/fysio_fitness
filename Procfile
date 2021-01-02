@@ -1,1 +1,1 @@
-web: gunicorn fysio_fitness.wsgi.py:application
+web: gunicorn fysio_fitness.wsgi:application
