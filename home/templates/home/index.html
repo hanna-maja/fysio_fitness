@@ -1,7 +1,107 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_header %}
+<div class="slider row">
+    <ul class="slides">
+        <li>
+            <img src="{% static 'images/mela1.jpg' %}"> <!-- random image -->
+            <div class="caption center-align">
+                <h1>Fysio Fitness</h1>
+                <h5 class="light grey-text text-lighten-3">Träning för livet, genom livet</h5>
+            </div>
+        </li>
+        <li>
+            <img src="{% static 'images/mela2.jpg' %}"> <!-- random image -->
+            <div class="caption left-align">
+                <h3>Fysio Fitness</h3>
+                <h5 class="light grey-text text-lighten-3">Smart träning för att nå dina mål</h5>
+            </div>
+        </li>
+        <li>
+            <img src="{% static 'images/mela3.jpg' %}"> <!-- random image -->
+            <div class="caption right-align">
+                <h3>Personlig träning</h3>
+                <h5 class="light grey-text text-lighten-3">Kompetens-Erfarenhet-Lyhördhet</h5>
+            </div>
+        </li>
+        <li>
+            <img src="{% static 'images/mela4.jpg' %}"> <!-- random image -->
+            <div class="caption center-align">
+                <h3>This is our big Tagline!</h3>
+                <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+            </div>
+        </li>
+    </ul>
+</div>
+
+{% endblock %}
+
 {% block content %}
-<h1>Fysio fitness</h1>
-{% include 'components/social_buttons.html' %}
+<div class="row">
+    {% include 'components/social_buttons.html' %}
+</div>
+<div class="divider"></div>
+<div class="row">
+    <h3>Tjänster</h3>
+
+    <div class="col s12 m6">
+        <div class="card">
+            <div class="card-image">
+                <img src="{% static 'images/mela1.jpg' %}">
+                <span class="card-title">Träningsprogram</span>
+            </div>
+            <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+                <a href="#">This is a link</a>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m6">
+        <div class="card">
+            <div class="card-image">
+                <img src="{% static 'images/mela2.jpg' %}">
+                <span class="card-title">Blogg</span>
+            </div>
+            <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+                <a href="#">This is a link</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="divider"></div>
+<div class="row">
+    <h3>Senaste från bloggen</h3>
+    <div class="col s12">
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="{% static 'images/mela2.jpg' %}">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p>I am a very simple card. I am good at containing small bits of information.</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.slider').slider({ full_width: true });
+    });
+</script>
 {% endblock %}
