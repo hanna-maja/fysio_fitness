@@ -1,1 +1,1 @@
-web: python manage.py collectstatic --no-input; gunicorn fysio_fitness.wsgi:application
+web: gunicorn fysio_fitness.wsgi:application
