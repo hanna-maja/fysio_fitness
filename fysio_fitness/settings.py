@@ -22,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'rl79(n)t*wzi2r=yo!osr6b31ou)1r^jo6ub58gh8gx%h_%&9!'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'rl79(n)t*wzi2r=yo!osr6b31ou)1r^jo6ub58gh8gx%h_%&9!')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['fysio-fitness.herokuapp.com', 'fysiofitness.nu', 'localhost']
+ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
 
 # Application definition
@@ -112,7 +112,7 @@ WSGI_APPLICATION = 'fysio_fitness.wsgi.application'
 # }
 
 DATABASES = {
-    'default': dj_database_url.parse("postgres://lbyfaujnfszyqn:303f9485394e8c01307f4b4d1b4dd033124e6554cd036a611903b119544e4d49@ec2-54-246-87-132.eu-west-1.compute.amazonaws.com:5432/dhcl3rejaa8ll")
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 
