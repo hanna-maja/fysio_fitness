@@ -8,3 +8,5 @@ __pycache__/
 *.pyc
 __pycache__
 *_sqlite3
+media/*/*
+media/*.*
