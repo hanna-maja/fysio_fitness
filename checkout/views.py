@@ -1,7 +1,6 @@
 from django.shortcuts import (
     render, redirect, reverse, get_object_or_404, HttpResponse
 )
-from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 
@@ -12,25 +11,6 @@ from subscriptions.models import SubscriptionPlan
 #from profiles.models import UserProfile
 
 import stripe
-import json
-
-
-@require_POST
-def cache_checkout_data(request):
-    try:
-        pid = request.POST.get('client_secret').split('_secret')[0]
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-        stripe.PaymentIntent.modify(pid, metadata={
-            'bag': json.dumps(request.session.get('bag', {})),
-            'save_info': request.POST.get('save_info'),
-            'username': request.user,
-        })
-        return HttpResponse(status=200)
-    except Exception as e:
-        messages.error(request, ('Sorry, your payment cannot be '
-                                 'processed right now. Please try '
-                                 'again later.'))
-        return HttpResponse(content=e, status=400)
 
 
 def checkout(request):
@@ -38,14 +18,12 @@ def checkout(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
-        # todo: need to get subscription_plan from request
-        # bag = request.session.get('bag', {})
-        subscription_plan = None #request #Product.objects.get(id=item_id)
+        plan_id = request.POST['plan_id']
+        subscription_plan = SubscriptionPlan.objects.get(id=plan_id)
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
-            'country': request.POST['country'],
             'postcode': request.POST['postcode'],
             'town_or_city': request.POST['town_or_city'],
             'street_address1': request.POST['street_address1'],
@@ -69,8 +47,8 @@ def checkout(request):
                                      'Vänligen dubbelkolla informationen du angivit.'))
     else:
         # get subscription plan
-        subscription_plan = SubscriptionPlan() #request.session.get('bag', {})
-        subscription_plan.price = 100.00
+        plan_id = request.GET.get('plan_id', '') 
+        subscription_plan = SubscriptionPlan.objects.get(id=plan_id)
         if not subscription_plan:
             messages.error(request,
                            "Du måste välja en plan för att checka ut")
@@ -114,6 +92,7 @@ def checkout(request):
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
+        'plan_id': plan_id,
     }
 
     return render(request, template, context)

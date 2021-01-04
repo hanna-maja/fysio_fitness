@@ -39,7 +39,6 @@ class Order(models.Model):
         Update grand total each time a line item is added,
         accounting for delivery costs.
         """
-        self.order_total = self.subscription_plan.price
         self.save()
 
     def save(self, *args, **kwargs):
@@ -49,6 +48,7 @@ class Order(models.Model):
         """
         if not self.order_number:
             self.order_number = self._generate_order_number()
+        self.order_total = self.subscription_plan.price
         super().save(*args, **kwargs)
 
     def __str__(self):
