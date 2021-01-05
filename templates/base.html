@@ -29,14 +29,23 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger show-on-large"><i
                         class="material-icons">menu</i></a>
                 <ul id="nav-mobile-right" class="right">
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'videos' %}"><i class="material-icons">video_library</i></a></li>
+                    {% else %}
                     <li><a href="{% url 'account_login' %}"><i class="material-icons">person</i></a></li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
         <ul class="sidenav" id="mobile-demo">
             <li><a href="{% url 'home' %}">Hem</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'videos' %}">Träningsfilmer</a></li>
+            <li><a href="{% url 'account_logout' %}">Logga ut</a></li>
+            {% else %}
             <li><a href="{% url 'subscriptions' %}">Träningsfilmer</a></li>
             <li><a href="{% url 'account_login' %}">Logga in</a></li>
+            {% endif %}
             <li>
                 <div class="row social">
                     <div class="divider"></div>
