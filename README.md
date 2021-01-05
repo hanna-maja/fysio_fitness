@@ -11,6 +11,7 @@ Essentially, this part is your sales pitch.
 - As a Visitor of the home-page I want to find training movies.
 - As an Visitor I want to follow Fysio Fitness on social media (Facebook/Instagram).
 - As an Visitor I want to be able to email Fysio Fitness with private questions.
+- As a Visitor of the home-page I want to know more about Fysio Fitness
 
 Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
 
