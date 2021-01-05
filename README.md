@@ -15,6 +15,18 @@ Essentially, this part is your sales pitch.
 - As a Visitor I want to know more about the different plans for Training movies.
 - As a Visitor I want to find a way to pay for a plan.
 - As a Customer I should be able to pay for a plan.
+    - Non existing user
+        - Test that we get 302 to /users/videos
+        - Test that we get an Order with total_amount = price on plan
+        - Test that we can get a user with username as email
+        - Test that we are logged in
+    - If a user already exists
+        - Test that we get 302 to /account/login
+        - Test that we get an order with total_amount = price on plan
+    - Valid until
+        - Valid until is null -> add days from today
+        - Valid until is before today -> add days from today
+        - Valid until is after today -> add days from valid until date
 
 
 Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
