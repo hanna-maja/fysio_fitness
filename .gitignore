@@ -10,3 +10,4 @@ __pycache__
 *_sqlite3
 media/*/*
 media/*.*
+staticfiles/
