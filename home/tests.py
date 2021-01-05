@@ -46,3 +46,25 @@ class HomeIndexViewTests(TestCase):
             response,
             'href="mailto:fysiofitness007@gmail.com"',
         )
+
+    def test_aboutmerit(self):
+        """
+        Header meriter is found
+        """
+        response = self.client.get(reverse('home'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            '<h5 class="center"><i class="fas fa-dumbbell"></i> Meriter:</h5>',
+        )
+
+    def test_name_exict(self):
+        """
+        Name on page exist
+        """
+        response = self.client.get(reverse('home'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            '<h5 class="center">Michaela Augustsson</h5>',
+        )
