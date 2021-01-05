@@ -6,11 +6,14 @@ from django.conf import settings
 
 from .forms import OrderForm
 from .models import Order
+from django.contrib.auth.models import User
+from django.contrib.auth import login
 
 from subscriptions.models import SubscriptionPlan
 #from profiles.models import UserProfile
 
 import stripe
+from stripe.api_resources.payment_intent import PaymentIntent
 
 
 def checkout(request):
@@ -20,14 +23,13 @@ def checkout(request):
     if request.method == 'POST':
         plan_id = request.POST['plan_id']
         subscription_plan = SubscriptionPlan.objects.get(id=plan_id)
+        email = request.POST['email']
+        password = request.POST['password']
         form_data = {
             'full_name': request.POST['full_name'],
-            'email': request.POST['email'],
+            'email': email,
             'phone_number': request.POST['phone_number'],
-            'postcode': request.POST['postcode'],
-            'town_or_city': request.POST['town_or_city'],
-            'street_address1': request.POST['street_address1'],
-            'street_address2': request.POST['street_address2'],
+            'password': password,
         }
 
         order_form = OrderForm(form_data)
@@ -37,11 +39,23 @@ def checkout(request):
             order.stripe_pid = pid
             order.subscription_plan = subscription_plan
             order.save()
-            
-            # Save the info to the user's profile if all is well
-            request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('videos'))
+
+            redirect_string = 'videos'   
+            try:
+                user = User.objects.get(username=email)
+                if not request.user.is_authenticated:
+                    redirect_string = 'account_login'
+            except:
+                user = User.objects.create_user(email, email, password)
+                login(request, user, 'allauth.account.auth_backends.AuthenticationBackend')
+
+            # TODO: add days to user valid
+
+            return redirect(reverse(redirect_string))
         else:
+            intent = PaymentIntent()
+            intent.client_secret = request.POST.get('client_secret')
+            total = subscription_plan.price
             messages.error(request, ('Fel i formuläret'
                                      'Vänligen dubbelkolla informationen du angivit.'))
     else:
