@@ -14,6 +14,7 @@ from subscriptions.models import SubscriptionPlan
 
 import stripe
 from stripe.api_resources.payment_intent import PaymentIntent
+import datetime
 
 
 def checkout(request):
@@ -49,7 +50,13 @@ def checkout(request):
                 user = User.objects.create_user(email, email, password)
                 login(request, user, 'allauth.account.auth_backends.AuthenticationBackend')
 
-            # TODO: add days to user valid
+            # add days to user valid
+            days = subscription_plan.days
+            if user.profile.valid_until is None or user.profile.valid_until < datetime.date.today():
+                user.profile.valid_until = datetime.date.today() + datetime.timedelta(days=days)
+            else:
+                user.profile.valid_until = user.profile.valid_until + datetime.timedelta(days=days)
+            user.save()
 
             return redirect(reverse(redirect_string))
         else:

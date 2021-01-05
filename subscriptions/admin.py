@@ -6,6 +6,6 @@ from .models import SubscriptionPlan
 
 class SubscriptionPlanAdmin(admin.ModelAdmin):
     readonly_fields = ('plan_id',)
-    fields = ('name', 'description', 'price', 'image')
+    fields = ('name', 'description', 'price', 'days', 'image')
 
 admin.site.register(SubscriptionPlan, SubscriptionPlanAdmin)
