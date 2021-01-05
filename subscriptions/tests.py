@@ -5,10 +5,10 @@ from django.core.files import File
 
 
 class SubscriptionsIndexViewTests(TestCase):
-    def create_plan(self, plan_name, price, days):
+    def create_plan(self, plan_name, plan_price, days):
         test_image = File(open("static/images/mela1.jpg", 'rb'))
         return SubscriptionPlan.objects.create(name=plan_name, 
-            price=100,
+            price=plan_price,
             image=test_image)
 
     def test_buy_button(self):
@@ -42,7 +42,7 @@ class SubscriptionsIndexViewTests(TestCase):
         """
         price should be part of buttontext
         """
-        price = 100.00
+        price = 199.00
         self.create_plan("test", price, 30)
         response = self.client.get(reverse('subscriptions'))
         self.assertEqual(response.status_code, 200)
