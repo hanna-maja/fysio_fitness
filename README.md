@@ -27,6 +27,7 @@ Essentially, this part is your sales pitch.
         - Valid until is null -> add days from today
         - Valid until is before today -> add days from today
         - Valid until is after today -> add days from valid until date
+- As a Customer I want to be able to watch movies after I paid for a plan
 
 
 Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
