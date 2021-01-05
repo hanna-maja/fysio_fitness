@@ -54,6 +54,16 @@
     {% endblock %}
     
     <main class="container">
+        {% if messages %}
+        <div class="row">
+            {% for message in messages %}
+            <div class="materialert info {{ message.tags }}">
+                <div class="material-icons">{{ message.tags }}</div>
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
         <div class="row">
         {% block content %}
         {% endblock %}
