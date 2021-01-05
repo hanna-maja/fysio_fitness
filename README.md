@@ -1,11 +1,15 @@
 # Fysio Fitness
 
+This is a site where you will find training suited for you. You will have the chans to pay for PersonalTraing videos.
+
 One or two paragraphs providing an overview of your project.
 
 Essentially, this part is your sales pitch.
  
 ## UX
  
+- As a Visitor of the home-page I want to find training movies.
+
 Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
 
 In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
@@ -78,4 +82,4 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 ### Acknowledgements
 
-- I received inspiration for this project from X
+- I received inspiration for this project from https://piajansson.se/ and https://www.foreverfitsweden.se/index.html
