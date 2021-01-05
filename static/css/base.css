@@ -8,6 +8,13 @@
     font-size:24px;
 }
 
+/* Card title */ 
+.card-title{
+    background-color: black;
+    opacity: 0.7;
+    width: 100%;
+}
+
 /* Side nav */
 .sidenav .social a
 {
