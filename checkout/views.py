@@ -92,6 +92,7 @@ def checkout(request):
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
         'plan_id': plan_id,
+        'total_price': total
     }
 
     return render(request, template, context)

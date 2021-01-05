@@ -8,6 +8,7 @@ class OrderForm(forms.ModelForm):
         fields = ('full_name', 'email', 'phone_number',
                   'street_address1', 'street_address2',
                   'town_or_city', 'postcode',)
+    password = forms.CharField(label='Lösenord', widget=forms.PasswordInput(attrs={'placeholder': 'ange lösenord'}))
 
     def __init__(self, *args, **kwargs):
         """
@@ -23,6 +24,7 @@ class OrderForm(forms.ModelForm):
             'town_or_city': 'Postadress',
             'street_address1': 'Gata och nummer',
             'street_address2': 'c/o',
+            'password':'Lösenord',
         }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True
