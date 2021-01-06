@@ -47,6 +47,8 @@ The site is an E-commerce that sells access to videos with training instructions
     - For a returning customer you should be able to login
 ​
 ### Features Left to Implement
+- More videos to come
+- Exclusive video content not reachable from outside the app
 - Trial period for video content
 - Recurring payment to automatically renew access to video content
 - Blog for SEO and creditability
