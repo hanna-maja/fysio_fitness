@@ -3,6 +3,7 @@ from .models import Order
 
 
 class OrderForm(forms.ModelForm):
+    """ Class to handle order form on checkout page """
     class Meta:
         model = Order
         fields = ('full_name', 'email', 'phone_number',)
@@ -18,7 +19,7 @@ class OrderForm(forms.ModelForm):
             'full_name': 'För och efternamn',
             'email': 'Email',
             'phone_number': 'Mobilnummer',
-            'password':'Lösenord',
+            'password': 'Lösenord',
         }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True
