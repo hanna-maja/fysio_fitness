@@ -129,6 +129,7 @@ In order to deploy this project to Heroku:
 ​
 - In Heroky, click the Deploy tab.
 - Under "Manual Deployment", ensure that the master branch is selected and click "Deploy Branch" to get up to a fresh start.
+- Before opening the app, make sure latest migrations are run using Heroku console `python3 manage.py migrate`.
 ​
 ### Media
 - The photos used in this site were obtained from Michaela Augustsson and her page at Instagram page `https://www.instagram.com/michaelaaugustsson/`
