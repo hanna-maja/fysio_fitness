@@ -56,7 +56,7 @@ The site is an E-commerce that sells access to videos with training instructions
 - Blog for SEO and creditability
 ​
 ## Technologies Used
-​
+
 - [HTML](https://sv.wikipedia.org/wiki/HTML)
     - For content and structure.
 - [CSS](https://sv.wikipedia.org/wiki/Cascading_Style_Sheets)
@@ -90,7 +90,7 @@ Automated tests are written for all apps and use cases can be found in [app]/tes
 To run tests run `python3 manage.py test` after checking out the repository and installing all requirements (see local deployment).
 ​
 ## Deployment
-​
+
 ### Local deploy:
 - Clone repository from git: `git clone https://github.com/hanna-maja/fysio-fitness`
 - Install requirements: `pip3 install -r requirements.txt`
@@ -101,7 +101,8 @@ To run tests run `python3 manage.py test` after checking out the repository and 
     - export USE_LOCAL_STORAGE='True' 
 - Create static content. `python3 manage.py collectstatic` 
 - Run app. `python3 manage.py runserver`
-- Visit `localhost:8000` in your favorite browser
+- Visit `localhost:8000` in your favorite browser  
+
 ​
 Note - To access /admin, create a superuser using `python manage.py createsuperuser`  
 Note2 - Clear database using `python manage.py flush`  (doing this you need to create a new superuser)
@@ -131,10 +132,11 @@ In order to deploy this project to Heroku:
     STRIPE_PUBLIC_KEY = [Stripe public key created above]
     STRIPE_SECRET_KEY = [Stripe secret key created above]
 ```
-​
+
 - In Heroky, click the Deploy tab.
 - Under "Manual Deployment", ensure that the master branch is selected and click "Deploy Branch" to get up to a fresh start.
 - Before opening the app, make sure latest migrations are run using Heroku console `python3 manage.py migrate`.
+
 
 Note - To access /admin, create a superuser using `python manage.py createsuperuser` 
 ​
