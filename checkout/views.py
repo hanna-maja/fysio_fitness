@@ -10,7 +10,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login
 
 from subscriptions.models import SubscriptionPlan
-#from profiles.models import UserProfile
 
 import stripe
 from stripe.api_resources.payment_intent import PaymentIntent
@@ -18,6 +17,7 @@ import datetime
 
 
 def checkout(request):
+    """ A view to return the checkout page and handle logic for payment"""
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -41,7 +41,7 @@ def checkout(request):
             order.subscription_plan = subscription_plan
             order.save()
 
-            redirect_string = 'videos'   
+            redirect_string = 'videos'
             try:
                 user = User.objects.get(username=email)
                 if not request.user.is_authenticated:
@@ -67,7 +67,7 @@ def checkout(request):
                                      'Vänligen dubbelkolla informationen du angivit.'))
     else:
         # get subscription plan
-        plan_id = request.GET.get('plan_id', '') 
+        plan_id = request.GET.get('plan_id', '')
         subscription_plan = SubscriptionPlan.objects.get(id=plan_id)
         if not subscription_plan:
             messages.error(request,
@@ -81,27 +81,7 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-
-        # Attempt to prefill the form with any info
-        # the user maintains in their profile
-        # if request.user.is_authenticated:
-        #     try:
-        #         profile = UserProfile.objects.get(user=request.user)
-        #         order_form = OrderForm(initial={
-        #             'full_name': profile.user.get_full_name(),
-        #             'email': profile.user.email,
-        #             'phone_number': profile.default_phone_number,
-        #             'country': profile.default_country,
-        #             'postcode': profile.default_postcode,
-        #             'town_or_city': profile.default_town_or_city,
-        #             'street_address1': profile.default_street_address1,
-        #             'street_address2': profile.default_street_address2,
-        #         })
-        #     except UserProfile.DoesNotExist:
-        #         order_form = OrderForm()
-        # else:
-            # order_form = OrderForm()
-        order_form = OrderForm() # todo - remove when userprofile
+        order_form = OrderForm() 
     if not stripe_public_key:
         messages.warning(request, ('Stripe public key is missing. '
                                    'Did you forget to set it in '
