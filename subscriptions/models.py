@@ -1,8 +1,9 @@
 from django.db import models
 import uuid
 
-# Create your models here.
+
 class SubscriptionPlan(models.Model):
+    """ Class to handle subscription plans """
     plan_id = models.CharField(max_length=32, null=False, editable=False)
     name = models.CharField(max_length=254, null=False, blank=False)
     description = models.TextField()
@@ -12,6 +13,7 @@ class SubscriptionPlan(models.Model):
     image = models.ImageField(null=True, blank=True, upload_to='subscriptions')
 
     def __str__(self):
+        """ Return name of subscription plan as default string """
         return self.name
 
     def save(self, *args, **kwargs):

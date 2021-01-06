@@ -3,14 +3,11 @@ import uuid
 from django.db import models
 
 from subscriptions.models import SubscriptionPlan
-# from profiles.models import UserProfile
 
 
 class Order(models.Model):
+    """ Class to handle orders """
     order_number = models.CharField(max_length=32, null=False, editable=False)
-    # user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
-    #                                null=True, blank=True,
-    #                                 related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
@@ -47,6 +44,7 @@ class Order(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
+        """
+        Return order_number as default string
+        """
         return self.order_number
-
-
