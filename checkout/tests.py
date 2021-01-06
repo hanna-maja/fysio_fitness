@@ -24,7 +24,7 @@ class CheckoutViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(
             response,
-            '<span>Ditt kort kommer debiteras med <strong>{:.2f} kr</strong></span>'.format(price),
+            '<span>Ditt kort kommer debiteras med <strong>{:.2f} kr</strong></span>'.format(price).replace('.',','),
             1,
         )
 

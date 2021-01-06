@@ -9,7 +9,8 @@ class SubscriptionsIndexViewTests(TestCase):
         test_image = File(open("static/images/mela1.jpg", 'rb'))
         return SubscriptionPlan.objects.create(name=plan_name, 
             price=plan_price,
-            image=test_image)
+            image=test_image,
+            days=days,)
 
     def test_buy_button(self):
         """
@@ -48,6 +49,6 @@ class SubscriptionsIndexViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(
             response,
-            '<a class="btn" href="/checkout?plan_id=1">Köp {:.2f} kr</a>'.format(price),
+            '<a class="btn" href="/checkout?plan_id=1">Köp {:.2f} kr</a>'.format(price).replace('.',','),
             1,
         )
