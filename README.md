@@ -3,6 +3,8 @@
 Michaela Augustsson is a swedish atlete who for example won the swedish championships in Atletic Fitness. Fysio Fitness is a company where Michaela helps the customers with finding the training best suited for them. 
 ​
 The site is an E-commerce that sells access to videos with training instructions.
+
+# ![Logo](static/images/fysio-fitness-mockup.png) #
  
 ## UX
  
