@@ -86,7 +86,7 @@ The site is an E-commerce that sells access to videos with training instructions
 ​
 ## Testing
 ​
-Automated tests are written for all apps and use cases can be found in <app>/tests.py.
+Automated tests are written for all apps and use cases can be found in [app]/tests.py.
 To run tests run `python3 manage.py test` after checking out the repository and installing all requirements (see local deployment).
 ​
 ## Deployment
