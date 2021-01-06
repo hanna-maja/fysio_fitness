@@ -79,6 +79,8 @@ The site is an E-commerce that sells access to videos with training instructions
     - To simplify DOM manipulation.
 - [Stripe](https://stripe.com/)
     - For card payments.
+- [Amazon Web Services (AWS)](https://aws.amazon.com/)
+    - To store static media content.
 ​
 ## Testing
 ​
@@ -121,6 +123,7 @@ In order to deploy this project to Heroku:
 ​
 ```
     SECRET_KEY = [Django secret key generated above]
+    HEROKU_HOSTNAME = [Hostname in Heroku]
     AWS_SECRET_KEY = [AWS secret key created above]
     AWS_SECRET_ACCESS_KEY = [AWS secret access key created above]
     STRIPE_PUBLIC_KEY = [Stripe public key created above]
@@ -130,6 +133,8 @@ In order to deploy this project to Heroku:
 - In Heroky, click the Deploy tab.
 - Under "Manual Deployment", ensure that the master branch is selected and click "Deploy Branch" to get up to a fresh start.
 - Before opening the app, make sure latest migrations are run using Heroku console `python3 manage.py migrate`.
+
+Note - To access /admin, create a superuser using `python manage.py createsuperuser` 
 ​
 ### Media
 - The photos used in this site were obtained from Michaela Augustsson and her page at Instagram page `https://www.instagram.com/michaelaaugustsson/`
