@@ -141,7 +141,7 @@ In order to deploy this project to Heroku:
 Note - To access /admin, create a superuser using `python manage.py createsuperuser` 
 ​
 ### Media
-- The photos used in this site were obtained from Michaela Augustsson and her page at Instagram page `https://www.instagram.com/michaelaaugustsson/`
+- The photos used in this site were obtained from Michaela Augustsson and her page at Instagram page https://www.instagram.com/michaelaaugustsson/
 ​
 ### Acknowledgements
 - I received inspiration for this project from https://piajansson.se/ and https://www.foreverfitsweden.se/index.html
