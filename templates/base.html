@@ -26,10 +26,11 @@
             <div class="nav-wrapper pink accent-4">
                 <a href="{% url 'home' %}" class="brand-logo center"><img src="{% static 'images/fysio-white-logo-small.png' %}"
                         alt=""></a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger show-on-large"><i
+                <a href="#" data-target="mobile-nav" class="sidenav-trigger show-on-large"><i
                         class="material-icons">menu</i></a>
                 <ul id="nav-mobile-right" class="right">
                     {% if user.is_authenticated %}
+                    <li>{% include 'components/valid_days.html' %}</li>
                     <li><a href="{% url 'videos' %}"><i class="material-icons">video_library</i></a></li>
                     {% else %}
                     <li><a href="{% url 'account_login' %}"><i class="material-icons">person</i></a></li>
@@ -37,7 +38,7 @@
                 </ul>
             </div>
         </nav>
-        <ul class="sidenav" id="mobile-demo">
+        <ul class="sidenav" id="mobile-nav">
             <li><a href="{% url 'home' %}">Hem</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'videos' %}">Träningsfilmer</a></li>
@@ -98,6 +99,10 @@
         document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.sidenav');
             var instances = M.Sidenav.init(elems);
+        });
+
+        $(document).ready(function(){
+            $('.tooltipped').tooltip();
         });
     </script>
     {% endblock %}

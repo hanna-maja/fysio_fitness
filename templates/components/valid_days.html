@@ -1,0 +1,2 @@
+{% load valid_days %}
+<span class="hide-on-small-only">Återstående dagar:</span> <span class="tooltipped" data-position="bottom" data-tooltip="Återstående dagar">{% valid_days user.profile.valid_until %}</span>
